@@ -1,4 +1,3 @@
-// solution
 app.component('product-details', {
    props: {
       details: {
@@ -14,4 +13,3 @@ app.component('product-details', {
    </ul>
    `,
 });
-// solution
