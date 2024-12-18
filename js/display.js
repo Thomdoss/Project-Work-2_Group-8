@@ -16,7 +16,7 @@ app.component('product-display', {
          <h1>{{ title }}</h1>
  
          <p v-if = "quantity > 20">In Stock</p>
-         <p v-else-if = "quantity <= 20 && quantity > 0">Almost of Stock !</p>
+         <p v-else-if = "quantity <= 20 && quantity > 0">Almost out of Stock !</p>
          <p v-else>Out of Stock</p>
  
          <p>Shipping: {{ shipping }}</p>
