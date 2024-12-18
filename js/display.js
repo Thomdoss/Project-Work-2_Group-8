@@ -15,8 +15,8 @@ app.component('product-display', {
        <div class="product-info">
          <h1>{{ title }}</h1>
  
-         <p v-if = "quantity > 20">In Stock</p>
-         <p v-else-if = "quantity <= 20 && quantity > 0">Almost out of Stock !</p>
+         <p v-if = "quantity > 10">In Stock</p>
+         <p v-else-if = "quantity <= 10 && quantity > 0">Almost out of Stock !</p>
          <p v-else>Out of Stock</p>
  
          <p>Shipping: {{ shipping }}</p>
@@ -40,6 +40,14 @@ app.component('product-display', {
            v-on:click="addToCart">
            Add to Cart
          </button>
+
+         <button 
+           class="button" 
+           :class="{ disabledButton: !this.cart || initial_quantity == quantity }" 
+           :disabled="!this.cart || initial_quantity == quantity" 
+           v-on:click="removeFromCart">
+           Remove Cart
+         </button>
        </div>
      </div>
    </div>`,
@@ -54,19 +62,22 @@ app.component('product-display', {
                id: 11,
                color: 'black',
                image: './img/iphone_14_black.jpg',
-               quantity: 10,
+               quantity: 12,
+               initial_quantity: 12,
             },
             {
                id: 12,
                color: '#a2b7ca',
                image: './img/iphone_14_blue.jpg',
                quantity: 150,
+               initial_quantity: 150,
             },
             {
                id: 13,
                color: '#ff0425',
                image: './img/iphone_14_red.jpg',
                quantity: 0,
+               initial_quantity: 0,
             },
          ],
          reviews: [],
@@ -79,6 +90,13 @@ app.component('product-display', {
    methods: {
       addToCart() {
          this.$emit('update-cart');
+         this.variants[this.selectedVariant].quantity -= 1;
+         this.cart += 1;
+      },
+      removeFromCart() {
+         this.$emit('remove-cart');
+         this.variants[this.selectedVariant].quantity += 1;
+         this.cart -= 1;
       },
       updateVariant(index) {
          this.selectedVariant = index;
@@ -93,6 +111,9 @@ app.component('product-display', {
       },
       quantity() {
          return this.variants[this.selectedVariant].quantity;
+      },
+      initial_quantity() {
+         return this.variants[this.selectedVariant].initial_quantity;
       },
       shipping() {
          if (this.premium) {
