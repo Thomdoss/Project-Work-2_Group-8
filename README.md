@@ -1,7 +1,7 @@
 # Project-Work-2_Group-8
 
 ## Live Demo
-[Click here to view the live demo](https://thomdoss.github.io/Project-Work-1_Group-8/)
+[Click here to view the live demo](https://thomdoss.github.io/Project-Work-2_Group-8/)
 
 ## Project Overview
 In this project, we focused on the following key areas:
