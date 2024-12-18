@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Vue-Website_Team#8</title>
+      <!-- Import Styles -->
+      <link rel="stylesheet" href="./css/styles.css" />
+      <!-- Import Vue.js -->
+      <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+   </head>
+   <body>
+      <div id="app">
+         <div class="nav-bar"></div>
+         <div class="cart">Cart({{ cart }})</div>
+         <product-display :premium="premium" :cart="cart" @update-cart="cart += 1"></product-display>
+      </div>
+
+      <!-- Import App -->
+      <script src="./js/main.js"></script>
+
+      <!-- Import Components -->
+      <script src="./js/display.js"></script>
+      <script src="./js/details.js"></script>
+
+      <script>
+         const mountedApp = app.mount('#app');
+      </script>
+      <footer>
+         Copyright © 2024 ILAC and EFREI Paris - Created by : Théo BRACQUEMART ; Arthur BRIDE--GIRARDOT ;
+         Thomas DOS SANTOS ; Louis TECHER - All rights reserved
+      </footer>
+   </body>
+</html>
